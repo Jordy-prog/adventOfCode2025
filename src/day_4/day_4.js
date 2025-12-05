@@ -8,7 +8,7 @@ function part1(matrix) {
   let total = 0;
   for (const [i, row] of matrix.entries()) {
     for (const [j, cell] of row.entries()) {
-      if (isAccessible(cell, [i, j], matrix)) {
+      if (isAccessible([i, j], matrix)) {
         total++;
       }
     }
@@ -28,7 +28,7 @@ function part2(matrix) {
     // Determine new rolls to remove
     for (const [i, row] of matrix.entries()) {
       for (const [j, cell] of row.entries()) {
-        if (isAccessible(cell, [i, j], matrix)) {
+        if (isAccessible([i, j], matrix)) {
           total++;
           coordsToRemove.push([i, j]);
         }
@@ -43,7 +43,7 @@ function removeRoll([row, col], matrix) {
   matrix[row][col] = '.'; 
 }
 
-function isAccessible(cell, coords, matrix) {
+function isAccessible(coords, matrix) {
   if (!isPaperRoll(coords, matrix)) return false;
 
   let [row, col] = coords;
